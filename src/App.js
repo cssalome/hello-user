@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import "./App.css";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [card, setCard] = useState(false);
+  const [user, setUser] = useState('');
+
+
+  useEffect((card) => {
+    const alerta = (card)=>{
+    card &&  alert ('Tansk you for visting me😄')
+    return alerta
+    }
+  }, []);
+
+  return <div className="App" className='container'>
+    <h1>Hello User App</h1> 
+    <form >
+     <input type="text" placeholder="Enter your name" 
+     value={user} onChange = {(e) => setUser((e).target.value)} />
+     <button type="button" onClick={()=> setCard(!card)}>¡Greet me!</button>
+    </form>
+  <div>
+    <p>
+      {card ? `¡Welcome ${user}!` : 'Please enter your name 🙏'  }
+   </p>
+  </div>
+  </div>;
+
 }
 
 export default App;
